@@ -1,0 +1,19 @@
+{
+  "name": "checkinputplugin",
+  "version": "1.0.0",
+  "description": "Demo plugin to check input of textfield",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdishant/myfirst.git"
+  },
+  "author": "Dishant Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devdishant/myfirst/issues"
+  },
+  "homepage": "https://github.com/devdishant/myfirst#readme"
+}
