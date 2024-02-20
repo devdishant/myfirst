@@ -13,11 +13,11 @@ class CheckInputPlugin : CDVPlugin {
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
     
     @objc(displayInput:)func displayInput(_ command: CDVInvokedUrlCommand) {
-                
-        let msg = (command.arguments[0] as? NSObject)?.value(forKey: "param1") as? String ?? ""
         
-        if msg.count > 0 {
-            pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Welcome to cordova \(msg)")
+        let msg = (command.arguments[0] as? NSObject)?.value(forKey: "param1") as? String
+
+        if let reslut = msg, !reslut.isEmpty {
+            pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Welcome to cordova \(reslut)")
         } else {
             pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Please enter value in textfield")
         }
