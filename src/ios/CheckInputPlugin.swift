@@ -9,19 +9,12 @@ import Foundation
 
 @objc(CheckInputPlugin)
 class CheckInputPlugin : CDVPlugin {
-    // MARK: Properties
-    var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-    
-    @objc(displayInput:)func displayInput(_ command: CDVInvokedUrlCommand) {
-        
-        let msg = (command.arguments[0] as? NSObject)?.value(forKey: "param1") as? String
 
-        if let result = msg, !result.isEmpty {
-            pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Welcome to cordova \(result)")
-        } else {
-            pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Please enter value in textfield")
-        }
+    @objc(displayInput:)func displayInput(_ command: CDVInvokedUrlCommand) {
+        let inputParam = (command.arguments[0] as? NSObject)?.value(forKey: "param1") as? String ?? ""
+        let status = inputParam.isEmpty ? CDVCommandStatus_ERROR : CDVCommandStatus_OK
+        let message = inputParam.isEmpty ? "Please enter value in textfield" : "Welcome to cordova \(inputParam)"
+        let pluginResult = CDVPluginResult(status: status, messageAs: message)
         self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
     }
-    
 }
